@@ -9,7 +9,7 @@ import * as path from 'path'
 
 // See https://www.gitpod.io/docs/config-gitpod-file
 export const gitpodKonfik = GitpodKonfik({
-  tasks: [{ init: 'yarn install' }],
+  tasks: [{ init: 'pnpm install' }],
   vscode: {
     extensions: ['dbaeumer.vscode-eslint'],
   },
@@ -70,19 +70,29 @@ export const packageJsonKonfik = PackageJsonKonfik({
     'build:ts': 'tsc --build tsconfig.all.json',
     'build:clean': "bash -c 'rm -rf packages/*/dist plugins/*/dist generate/*/dist packages/@konfik/*/dist'",
     'build:konfik': 'konfik build --config ./.konfik/index.ts',
-    'dev:ts': 'yarn build:ts --watch',
-    'dev:bundle-cli': 'yarn workspace konfik build:bundle --watch',
+    'dev:ts': 'pnpm build:ts --watch',
+    'dev:bundle-cli': 'pnpm workspace konfik build:bundle --watch',
     'lint:check': 'eslint packages .konfik --ext .ts,.tsx --max-warnings=0',
     'lint:fix': 'eslint packages .konfik --ext .ts,.tsx --fix',
     changeset: 'node ./.changeset/changeset-cli.cjs',
     // 'release:dev':
-    // 'yarn build && yarn workspaces foreach --verbose --topological-dev --parallel --no-private npm publish --tolerate-republish --tag=dev --access=public',
+    // 'pnpm build && pnpm workspaces foreach --verbose --topological-dev --parallel --no-private npm publish --tolerate-republish --tag=dev --access=public',
     // 'release:latest':
-    // 'yarn build && yarn workspaces foreach --verbose --topological-dev --parallel --no-private npm publish --tolerate-republish --access=public',
+    // 'pnpm build && pnpm workspaces foreach --verbose --topological-dev --parallel --no-private npm publish --tolerate-republish --access=public',
   },
   // TODO: can we create a type representing every possible NPM package name and valid versions
   devDependencies: {
     '@konfik/utils': 'workspace:*',
+    '@konfik-plugin/package-json': 'workspace:*',
+    '@konfik-plugin/eslint': 'workspace:*',
+    '@konfik-plugin/github': 'workspace:*',
+    '@konfik-plugin/gitignore': 'workspace:*',
+    '@konfik-plugin/gitpod': 'workspace:*',
+    '@konfik-plugin/jest': 'workspace:*',
+    '@konfik-plugin/prettier': 'workspace:*',
+    '@konfik-plugin/tsconfig': 'workspace:*',
+    '@konfik-plugin/vscode': 'workspace:*',
+    '@konfik-plugin/yarn': 'workspace:*',
     '@changesets/changelog-github': '^0.4.2',
     '@changesets/cli': '2.22.0-temp.0',
     '@effect-ts/tracing-plugin': '^0.18.0',
@@ -102,7 +112,7 @@ export const packageJsonKonfik = PackageJsonKonfik({
     zx: '^4.3.0',
   },
   // TODO: do we need to support the following field?
-  packageManager: 'yarn@3.1.1',
+  packageManager: 'pnpm@3.1.1',
 })
 
 // TODO: can we use Gitpod without including `.gitpod.yml` in vc?
@@ -114,11 +124,11 @@ export const gitignoreKonfik = GitignoreKonfik([
   'tmp',
   'dist',
   '',
-  '/.yarn/*',
-  '!/.yarn/releases',
-  '!/.yarn/patches',
-  '!/.yarn/plugins',
-  '!/.yarn/sdks',
+  '/.pnpm/*',
+  '!/.pnpm/releases',
+  '!/.pnpm/patches',
+  '!/.pnpm/plugins',
+  '!/.pnpm/sdks',
   '',
   '*.log',
   '',

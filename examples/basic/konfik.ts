@@ -9,7 +9,7 @@ const gitpodKonfik = GitpodKonfik({
   tasks: [
     {
       name: 'init',
-      command: 'yarn install',
+      command: 'pnpm install',
     },
   ],
   vscode: {

@@ -1,10 +1,14 @@
 import * as CliCommand from '@effect-ts/cli/Command'
 import * as CliExists from '@effect-ts/cli/Exists'
 import * as CliOptions from '@effect-ts/cli/Options'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { CaseConstructorTagged } from '@effect-ts/core/Case'
 import { flattenKonfikTrie } from '@konfik/core'
 import { filePathJoin, unknownToPosixFilePath } from '@konfik/utils'
 import { O, pipe, Show, T, Tagged } from '@konfik/utils/effect'
 import { fs } from '@konfik/utils/node'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { HasTracer } from '@konfik/utils/node_modules/@effect-ts/otel'
 import * as os from 'node:os'
 
 import type { KonfikCliCommand } from '../cli.js'

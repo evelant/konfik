@@ -13,7 +13,7 @@ import { accessCwd } from '../services/CwdService.js'
 import type { GetKonfikVersionError } from '../version.js'
 import * as esbuild from './esbuild.js'
 
-type GetConfigError =
+export type GetConfigError =
   | esbuild.EsbuildError
   | NoConfigFoundError
   | fs.StatError

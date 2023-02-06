@@ -1,7 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { CaseConstructorTagged } from '@effect-ts/core/Case'
 import { errorToString } from '@konfik/utils'
 import { E, Ex, H, M, O, OT, pipe, Q, Ref, S, T, Tagged } from '@konfik/utils/effect'
 import * as esbuild from 'esbuild'
-
 export const EsbuildWatcherTypeId = Symbol()
 export type EsbuildWatcherTypeId = typeof EsbuildWatcherTypeId
 

@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: yarn
+          cache: pnpm
       - name: Turbo Cache
         id: turbo-cache
         uses: actions/cache@v2
@@ -24,8 +24,8 @@ jobs:
           restore-keys: |
             turbo-${{ github.job }}-${{ github.ref_name }}-
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
         env:
           CI: true
       - name: Build
-        run: yarn turbo run build
+        run: pnpm turbo run build

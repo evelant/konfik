@@ -12,7 +12,7 @@ export interface CwdService {
 }
 
 export const makeCwdService = T.gen(function* ($) {
-  // The value of `process.env.INIT_CWD` is set by `yarn` or `npm` during
+  // The value of `process.env.INIT_CWD` is set by `pnpm` or `npm` during
   // installation
   const cwd = yield* $(T.succeedWith(() => unknownToPosixFilePath(process.env.INIT_CWD ?? process.cwd())))
 

@@ -11,7 +11,7 @@ export const vscodeTasks = VscodeTasksKonfik({
     {
       label: 'dev:bundle-cli',
       type: 'shell',
-      command: 'yarn dev:bundle-cli',
+      command: 'pnpm dev:bundle-cli',
       isBackground: true,
       presentation: {
         focus: false,
@@ -24,7 +24,7 @@ export const vscodeTasks = VscodeTasksKonfik({
     {
       label: 'dev:ts',
       type: 'shell',
-      command: 'yarn dev:ts',
+      command: 'pnpm dev:ts',
       problemMatcher: ['$tsc-watch'],
       isBackground: true,
       presentation: {
@@ -38,7 +38,7 @@ export const vscodeTasks = VscodeTasksKonfik({
     {
       label: 'lint',
       type: 'shell',
-      command: 'yarn lint:eslint:check',
+      command: 'pnpm lint:eslint:check',
       problemMatcher: '$eslint-stylish',
       presentation: {
         focus: false,

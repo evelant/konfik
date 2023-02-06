@@ -1,5 +1,7 @@
 import * as CliCommand from '@effect-ts/cli/Command'
 import * as CliOptions from '@effect-ts/cli/Options'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { CaseConstructorTagged } from '@effect-ts/core/Case'
 import * as Doc from '@effect-ts/printer/Core/Doc'
 import * as AnsiColor from '@effect-ts/printer/Terminal/Color'
 import type { AnsiDoc } from '@effect-ts/printer/Terminal/Render'
@@ -9,6 +11,8 @@ import { flattenKonfikTrie } from '@konfik/core'
 import { filePathJoin } from '@konfik/utils'
 import { Array, Map, O, pipe, T, Tagged } from '@konfik/utils/effect'
 import { fs } from '@konfik/utils/node'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { HasTracer } from '@konfik/utils/node_modules/@effect-ts/otel'
 import type { Change } from 'diff'
 import { diffLines } from 'diff'
 import * as path from 'node:path'
@@ -20,7 +24,6 @@ import { accessCwd } from '../services/CwdService.js'
 import { validatePlugins } from '../validate.js'
 import type { CommonCliOptions } from './common.js'
 import { configPathOption } from './common.js'
-
 // -----------------------------------------------------------------------------
 // Model
 // -----------------------------------------------------------------------------

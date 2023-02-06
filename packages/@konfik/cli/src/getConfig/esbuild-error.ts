@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { CaseConstructorTagged } from '@effect-ts/core/Case'
 import { isNotNull, isNotUndefined } from '@konfik/utils'
 import { Branded, O, Tagged } from '@konfik/utils/effect'
 

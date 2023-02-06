@@ -13,7 +13,7 @@ const sharedSteps: Steps = [
     uses: 'actions/setup-node@v2',
     with: {
       'node-version': '16.x',
-      cache: 'yarn',
+      cache: 'pnpm',
     },
   },
   // Needed until fixed: https://github.com/vercel/turborepo/issues/451
@@ -29,7 +29,7 @@ const sharedSteps: Steps = [
   },
   {
     name: 'Install dependencies',
-    run: 'yarn install',
+    run: 'pnpm install',
     env: { CI: true },
   },
 ]
@@ -50,7 +50,7 @@ export const main = GitHubWorkflowKonfik({
     lint: {
       // TODO: fix inference
       'runs-on': 'ubuntu-latest',
-      steps: [...sharedSteps, { run: 'yarn lint:check' }],
+      steps: [...sharedSteps, { run: 'pnpm lint:check' }],
     },
     build: {
       // TODO: fix inference
@@ -59,19 +59,19 @@ export const main = GitHubWorkflowKonfik({
         ...sharedSteps,
         {
           name: 'Build',
-          run: 'yarn turbo run build',
+          run: 'pnpm turbo run build',
         },
         {
           name: 'Create Release Pull Request or Publish to NPM',
           uses: 'contentlayerdev/action@draft-release-flow',
           with: {
-            publish: 'yarn changeset publish',
-            version: 'yarn changeset version',
+            publish: 'pnpm changeset publish',
+            version: 'pnpm changeset version',
           },
           env: {
             GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}',
             NPM_TOKEN: '${{ secrets.NPM_TOKEN }}',
-            YARN_NPM_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}',
+            pnpm_NPM_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}',
           },
         },
       ],
@@ -93,7 +93,7 @@ export const pr = GitHubWorkflowKonfik({
         ...sharedSteps,
         {
           name: 'Build',
-          run: 'yarn turbo run build',
+          run: 'pnpm turbo run build',
         },
       ],
     },

@@ -1,6 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { CaseConstructorTagged } from '@effect-ts/core/Case'
 import { errorToString } from '@konfik/utils'
 import { Tagged } from '@konfik/utils/effect'
-
 export class NoConfigFoundError extends Tagged('NoConfigFoundError')<{
   readonly configPath?: string
   readonly cwd: string

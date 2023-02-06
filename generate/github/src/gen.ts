@@ -1,3 +1,4 @@
+import axios from 'axios'
 import * as fs from 'fs/promises'
 import * as https from 'https'
 import * as json2Ts from 'json-schema-to-typescript'
@@ -19,19 +20,7 @@ async function main(): Promise<void> {
 
   await Promise.all(
     entries.map(async ([name, uri]) => {
-      const result = await new Promise<json2Ts.JSONSchema>((resolve, reject) => {
-        https.get(uri, (res) => {
-          let source = ''
-          res
-            .on('error', reject)
-            .on('data', (chunk) => {
-              source += chunk.toString()
-            })
-            .on('close', async () => {
-              resolve(JSON.parse(source))
-            })
-        })
-      })
+      const result = (await axios.get(uri)).data
 
       const serialized = await json2Ts.compile(result, name, {
         bannerComment: '/**\n * THIS FILE WAS GENERATED. BE WARY OF EDITING BY HAND.\n */',

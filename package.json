@@ -14,8 +14,8 @@
     "build:ts": "tsc --build tsconfig.all.json",
     "build:clean": "bash -c 'rm -rf packages/*/dist plugins/*/dist generate/*/dist packages/@konfik/*/dist'",
     "build:konfik": "konfik build --config ./.konfik/index.ts",
-    "dev:ts": "yarn build:ts --watch",
-    "dev:bundle-cli": "yarn workspace konfik build:bundle --watch",
+    "dev:ts": "pnpm build:ts --watch",
+    "dev:bundle-cli": "pnpm workspace konfik build:bundle --watch",
     "lint:check": "eslint packages .konfik --ext .ts,.tsx --max-warnings=0",
     "lint:fix": "eslint packages .konfik --ext .ts,.tsx --fix",
     "changeset": "node ./.changeset/changeset-cli.cjs"
@@ -24,6 +24,16 @@
     "@changesets/changelog-github": "^0.4.2",
     "@changesets/cli": "2.22.0-temp.0",
     "@effect-ts/tracing-plugin": "^0.18.0",
+    "@konfik-plugin/eslint": "workspace:*",
+    "@konfik-plugin/github": "workspace:*",
+    "@konfik-plugin/gitignore": "workspace:*",
+    "@konfik-plugin/gitpod": "workspace:*",
+    "@konfik-plugin/jest": "workspace:*",
+    "@konfik-plugin/package-json": "workspace:*",
+    "@konfik-plugin/prettier": "workspace:*",
+    "@konfik-plugin/tsconfig": "workspace:*",
+    "@konfik-plugin/vscode": "workspace:*",
+    "@konfik-plugin/yarn": "workspace:*",
     "@konfik/utils": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
@@ -40,5 +50,5 @@
     "typescript": "^4.6.2",
     "zx": "^4.3.0"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "pnpm@3.1.1"
 }
